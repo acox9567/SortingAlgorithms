@@ -5,21 +5,36 @@ public class InPlaceSorts {
 
     public static void insertionSort(int[] list)
     {
+        for (int i = 1; i < list.length; ++i)
+        {
+            int swapPos = list[i];
+            int j = i - 1;
 
+            while (list[j] < list [j + 1])
+            {
+                swap(list, j, j + 1);
+                j -= 1;
+            }
+        }
     }
 
     public static void selectionSort(int[] list)
     {
-        for (int i = 0; i < list.length-1; i++)
+        int minVal = 0;
+        int minPos = 0;
+
+        for (int i = 0; i < list.length; i++)
         {
-            int least = i;
+            minVal = list[i];
+            minPos= i;
 
             for (int j = 0; j < list.length; j++)
             {
-                if (list[j] < list[least])
-                    least = j;
+                if (list[j] < minVal)
+                    minPos = j;
             }
-            swap(list, i, least);
+
+            swap(list, i, minPos);
         }
     }
 
