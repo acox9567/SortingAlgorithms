@@ -7,20 +7,21 @@ public class InPlaceSorts {
     {
         for (int i = 1; i < list.length; ++i)
         {
-            int swapPos = list[i];
+            int swap = list[i];
             int j = i - 1;
 
-            while (list[j] < list [j + 1])
+            while (j >= 0 && list[j] > swap)
             {
-                swap(list, j, j + 1);
-                j -= 1;
+                list[j + 1] = list[j];
+                j = j - 1;
             }
+            list[j + 1] = swap;
         }
     }
 
-    public static void selectionSort(int[] list)
+    public static void selectionSort(double[] list)
     {
-        int minVal = 0;
+        double minVal = 0;
         int minPos = 0;
 
         for (int i = 0; i < list.length; i++)
@@ -34,11 +35,13 @@ public class InPlaceSorts {
                     minPos = j;
             }
 
-            swap(list, i, minPos);
+            double pHolder = list[i];
+            list[i] = list[minPos];
+            list[minPos] = pHolder;
         }
     }
 
-    public static void bubbleSort(int[] list)
+    public static void bubbleSort(String[] list)
     {
         int swapNum = 1;
 
@@ -48,9 +51,11 @@ public class InPlaceSorts {
 
             for (int i = 0; i < list.length - 1; i++)
             {
-                if (list[i + 1] < list[i])
+                if (list[i + 1].compareTo(list[i]) > 0)
                 {
-                    swap(list, i, (i + 1));
+                    String pHolder = list[i];
+                    list[i] = list[i + 1];
+                    list[i + 1] = pHolder;
                     swapNum++;
                 }
             }
