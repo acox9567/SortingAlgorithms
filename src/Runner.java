@@ -6,64 +6,41 @@ import java.util.Arrays;
 public class Runner {
 
     public static void main(String[] args) {
-        int numItems = 1000;
+        int numItems = 34946; //Exact max number before console breaks
 
         int[] list1 = randIntArr(numItems);
         int[] list2 = Arrays.copyOf(list1, numItems);
         int[] list3 = Arrays.copyOf(list1, numItems);
         int[] list4 = Arrays.copyOf(list1, numItems);
 
-        System.out.print("Original Array: \n[");
-        for (int i = 0; i < list4.length; i++)
-        {
-            System.out.print(list4[i] + ", ");
-        }
-        System.out.println("]\n");
+        System.out.print("Original Array:\n");
+        printArray(list1);
 
         //Runs bubble sort
-        double startTime = System.currentTimeMillis();
+        double startTime = System.nanoTime();
         SortingAlgorithms.bubbleSort(list1);
-        System.out.println("Bubble Sort: " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
-        System.out.print("[");
-        for (int i = 0; i < list1.length; i++)
-        {
-            System.out.print(list1[i] + ", ");
-        }
-        System.out.println("]\n");
+        System.out.println("Bubble Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
+        printArray(list1);
 
         //Runs selection sort
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         SortingAlgorithms.selectionSort(list2);
-        System.out.println("Selection Sort: " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
-        System.out.print("[");
-        for (int i = 0; i < list2.length; i++)
-        {
-            System.out.print(list2[i] + ", ");
-        }
-        System.out.println("]\n");
+        System.out.println("Selection Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
+        printArray(list2);
 
         //Runs insertion sort
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         SortingAlgorithms.insertionSort(list3);
-        System.out.println("Insertion Sort: " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
-        System.out.print("[");
-        for (int i = 0; i < list3.length; i++)
-        {
-            System.out.print(list3[i] + ", ");
-        }
-        System.out.println("]\n");
+        System.out.println("Insertion Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
+        printArray(list3);
 
         //Runs merge sort
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         SortingAlgorithms.mergeSort(list4);
-        System.out.println("Merge Sort: " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
-        System.out.print("[");
-        for (int i = 0; i < list4.length; i++)
-        {
-            System.out.print(list4[i] + ", ");
-        }
-        System.out.println("]\n");
+        System.out.println("Merge Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
+        printArray(list4);
     }
+
     public static int[] randIntArr(int count)
     {
         int[] arr = new int[count];
@@ -72,5 +49,15 @@ public class Runner {
             arr[i] = (int)(Math.random() * 10000);
 
         return arr;
+    }
+
+    public static void printArray(int[] list)
+    {
+        System.out.print("[");
+        for (int i = 0; i < list.length; i++)
+        {
+            System.out.print(list[i] + ", ");
+        }
+        System.out.println("]\n");
     }
 }
