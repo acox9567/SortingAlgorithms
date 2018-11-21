@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Runner {
 
     public static void main(String[] args) {
-        int numItems = 10000;
+        int numItems = 1000;
 
         int[] list1 = randIntArr(numItems);
         int[] list2 = Arrays.copyOf(list1, numItems);

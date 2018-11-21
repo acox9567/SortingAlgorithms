@@ -1,8 +1,6 @@
 //Alexander Cox
 //Thursday, November 15, 2018
 
-import java.util.Arrays;
-
 public class SortingAlgorithms {
 
     public static void mergeSort (int[] list)
@@ -23,41 +21,38 @@ public class SortingAlgorithms {
     }
     public static void merge (int[] list, int left, int mid, int right, int[] temp)
     {
-        int[] L = Arrays.copyOfRange(list, left, mid);
-        int[] R = Arrays.copyOfRange(list, (mid + 1), right);
+        int i = left, j = mid + 1, k = left;
 
-        int i = 0, j = 0, k = left;
-
-        while (i < L.length && j < R.length)
+        while (i <= mid && j <= right)
         {
-            if (L[i] <= R[j])
+            if (list[i] < list[j])
             {
-                temp[k] = L[i];
+                temp[k] = list[i];
                 i++;
             }
             else
             {
-                temp[k] = R[j];
+                temp[k] = list[j];
                 j++;
             }
             k++;
         }
 
-        while (i < L.length)
+        while (i <= mid)
         {
-            temp[k] = L[i];
+            temp[k] = list[i];
             i++;
             k++;
         }
 
-        while (j < R.length)
+        while (j <= right)
         {
-            temp[k] = R[j];
+            temp[k] = list[j];
             j++;
             k++;
         }
 
-        for (int x = left; x < right; x++)
+        for (int x = left; x <= right; x++)
         {
             list[x] = temp[x];
         }
