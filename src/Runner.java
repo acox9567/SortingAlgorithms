@@ -6,12 +6,14 @@ import java.util.Arrays;
 public class Runner {
 
     public static void main(String[] args) {
-        int numItems = 34946; //Exact max number before console breaks
+
+        int numItems = 10000;
 
         int[] list1 = randIntArr(numItems);
         int[] list2 = Arrays.copyOf(list1, numItems);
         int[] list3 = Arrays.copyOf(list1, numItems);
         int[] list4 = Arrays.copyOf(list1, numItems);
+        int[] list5 = Arrays.copyOf(list1, numItems);
 
         System.out.print("Original Array:\n");
         printArray(list1);
@@ -39,6 +41,12 @@ public class Runner {
         SortingAlgorithms.mergeSort(list4);
         System.out.println("Merge Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
         printArray(list4);
+
+        //Runs quick sort
+        startTime = System.nanoTime();
+        SortingAlgorithms.quickSort(list5, (0), (list5.length - 1));
+        System.out.println("Quick Sort: " + ((System.nanoTime() - startTime) / 1000000000) + "s");
+        printArray(list5);
     }
 
     public static int[] randIntArr(int count)

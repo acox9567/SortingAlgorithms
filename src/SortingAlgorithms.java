@@ -3,6 +3,36 @@
 
 public class SortingAlgorithms {
 
+    public static void quickSort (int[] list, int left, int right)
+    {
+        if (left < right)
+        {
+            int pivot = partition(list, left, right);
+
+            quickSort(list, left, (pivot - 1));
+            quickSort(list, (pivot + 1), right);
+        }
+    }
+    public static int partition(int[] list, int left, int right)
+    {
+        int pivot = list[right];
+        int i = left - 1;
+
+        for (int j = left; j < right; j++)
+        {
+            if (list[j] <= pivot)
+            {
+                i++;
+                swap(list, i, j);
+            }
+        }
+
+        swap(list, (i + 1), right);
+
+        return i + 1;
+    }
+
+
     public static void mergeSort (int[] list)
     {
         int n = list.length;
@@ -58,6 +88,7 @@ public class SortingAlgorithms {
         }
     }
 
+
     public static void insertionSort (int[] list)
     {
         for (int i = 1; i < list.length; ++i)
@@ -73,6 +104,7 @@ public class SortingAlgorithms {
             list[j + 1] = swap;
         }
     }
+
 
     public static void selectionSort (int[] list)
     {
@@ -92,6 +124,7 @@ public class SortingAlgorithms {
         }
     }
 
+
     public static void bubbleSort (int[] list)
     {
         int swapNum = 1;
@@ -110,6 +143,7 @@ public class SortingAlgorithms {
             }
         }
     }
+
 
     private static void swap (int[] arr, int pos1, int pos2)
     {
